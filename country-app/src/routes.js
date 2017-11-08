@@ -6,6 +6,7 @@ import Contact from './presentational/Contact';
 import NotFound from './presentational/NotFound';
 import CountryFlagContainer from './containers/CountryFlagContainer';
 import CountryDetailsContainer from './containers/CountryDetailsContainer';
+import ContinentsContainer from './containers/ContinentsContainer';
 
 export default (
     <Route path='/' component={Navigation}>
@@ -14,6 +15,7 @@ export default (
             <IndexRoute component={CountryFlagContainer} />
             <Route path='country/:id' component={CountryDetailsContainer} />
         </Route>
+        <Route path='continents' component={ContinentsContainer}/>
         <Route path='/contact' component={Contact} />
         <Route path='*' component={NotFound} />
     </Route>

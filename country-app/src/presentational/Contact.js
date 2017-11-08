@@ -1,7 +1,10 @@
 import React from 'react';
 
 const Contact = () => (
-    <h1>Ulica: Route 66</h1>
+    <div>
+        <h1>Kodilla</h1>
+        <h2>Zadanie 20.5</h2>
+    </div>
 );
 
 export default Contact;
