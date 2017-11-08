@@ -8,7 +8,7 @@ const Navigation = props => (
         <nav className="navbar navbar-default">
             <div className="container-fluid">
                 <div className="navbar-header">
-                    <Link className="navbar-brand" to="/">Państwa.js</Link>
+                    <Link className="navbar-brand" to="/">Home</Link>
                 </div>
                 <div className="collapse navbar-collapse">
                     <ul className="nav navbar-nav">
