@@ -14,7 +14,7 @@ const countriesReducer = (state = initialState, action) => {
 
         case GET_COUNTRY:
             const selectedCountry = state.countries.find(country =>
-                country.id === parseInt(action.id));
+                country.id === parseInt(action.id, 10));
             return {...state, selectedCountry}
 
         case SEARCH_COUNTRIES:
@@ -25,9 +25,9 @@ const countriesReducer = (state = initialState, action) => {
 
       case DELETE_COUNTRY:
             const notDeletedCountries = state.countries.filter(country =>
-                country.id !== parseInt(action.id));
+                country.id !== parseInt(action.id, 10));
             const notDeletedVisibleCountries = state.visibleCountries.filter(country =>
-                country.id !== parseInt(action.id));
+                country.id !== parseInt(action.id, 10));
             return {...state, countries: notDeletedCountries,
                 visibleCountries: notDeletedVisibleCountries}
 
