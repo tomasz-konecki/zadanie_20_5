@@ -14,7 +14,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         chooseContinent: (name) => dispatch(setContinent(name)),
         deleteCountry: (id) => dispatch(deleteCountry(id)),
-        searchCountry: (phrase) => dispatch(searchCountries(phrase))
+        searchCountry: (name) => dispatch(searchCountries(name))
     }
 }
 
