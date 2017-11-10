@@ -1,42 +1,21 @@
-import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setContinent, deleteCountry } from '../actions/actions-countries';
-import CountryFlagList from '../presentational/CountryFlagList';
+import { setContinent, deleteCountry, searchCountries } from '../actions/actions-countries';
+import Continents from '../presentational/Continents';
 
-class ContinentsContainer extends Component {
-
-    chooseContinent(event) {
-        this.props.dispatch(setContinent(event.target.value))
-    }
-
-    deleteCountry(id) {
-        this.props.dispatch(deleteCountry(id));
-    }
-
-    componentDidMount() {
-        this.props.dispatch(setContinent('Europa'));
-    }
-
-    render() {
-        return (
-            <div>
-                <select onChange={e => this.chooseContinent(e)}>
-                    <option value="Europa">Europa</option>
-                    <option value="Afryka">Afryka</option>
-                </select>
-                <CountryFlagList countries={this.props.visibleCountries}
-                    deleteCountry={this.deleteCountry.bind(this)} />
-            </div>
-        )
-    }
-}
 
 const mapStateToProps = (store) => {
     return {
-        visibleCountries: store.countriesReducer.visibleCountries
+        visibleCountries: store.countriesReducer.countries.filter(country =>
+                    country.continent === 'Europa')
     }
 };
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        chooseContinent: (name) => dispatch(setContinent(name)),
+        deleteCountry: (id) => dispatch(deleteCountry(id)),
+        searchCountry: (phrase) => dispatch(searchCountries(phrase))
+    }
+}
 
-
-export default connect(mapStateToProps)(ContinentsContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(Continents);

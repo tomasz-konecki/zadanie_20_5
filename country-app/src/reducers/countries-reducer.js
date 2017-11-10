@@ -10,19 +10,15 @@ const initialState = {
 
 const countriesReducer = (state = initialState, action) => {
     switch (action.type) {
-        /*
-        case GET_COUNTRIES:
-            return {...state, countries: state.countries}
-        */
         case GET_COUNTRY:
             const selectedCountry = state.countries.find(country =>
                 country.id === Number(action.id));
             return {...state, selectedCountry}
 
         case SEARCH_COUNTRIES:
+            console.log('action.searchText: ', ...action.searchText);
             const foundCountries = state.countries.filter(country => 
-                country.name.toLowerCase()
-                .includes(action.searchText.toLowerCase()));
+                country.name.toLowerCase().includes(action.searchText.toLowerCase()));
             return {...state, visibleCountries: foundCountries,
                             searchPhrase: action.searchText}
 
