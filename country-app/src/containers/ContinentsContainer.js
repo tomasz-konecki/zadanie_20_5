@@ -4,9 +4,6 @@ import { setContinent, deleteCountry } from '../actions/actions-countries';
 import CountryFlagList from '../presentational/CountryFlagList';
 
 class ContinentsContainer extends Component {
-    constructor(props) {
-        super();
-    }
 
     chooseContinent(event) {
         this.props.dispatch(setContinent(event.target.value))
@@ -37,7 +34,9 @@ class ContinentsContainer extends Component {
 const mapStateToProps = (store) => {
     return {
         visibleCountries: store.countriesReducer.visibleCountries
-    };
+    }
 };
+
+
 
 export default connect(mapStateToProps)(ContinentsContainer);

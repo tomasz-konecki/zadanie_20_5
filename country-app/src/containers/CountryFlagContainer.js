@@ -1,18 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CountryFlagList from '../presentational/CountryFlagList';
-import { getCountries, searchCountries, deleteCountry } from '../actions/actions-countries';
+import { searchCountries, deleteCountry } from '../actions/actions-countries';
 
 class CountryFlagContainer extends Component {
-    constructor(props) {
-        super();
-    }
 
-    componentDidMount() {
-        this.props.dispatch(getCountries());
-        this.props.dispatch(searchCountries(''));
-    }
-
+/*
     search(event) {
         this.props.dispatch(searchCountries(event.target.value));
     }
@@ -20,14 +13,15 @@ class CountryFlagContainer extends Component {
    deleteCountry(id) {
         this.props.dispatch(deleteCountry(id));
     }    
-
+*/
     render() {
         return (
             <div>
                 <div className="search text-center">
-                    <input type="text" onChange={this.search.bind(this)} />
+                    <input type="text" onChange={this.props.searchCountry} />
                 </div>
-                <CountryFlagList countries={this.props.visibleCountries} deleteCountry={this.deleteCountry.bind(this)}/>
+                <CountryFlagList countries={this.props.visibleCountries}
+                    deleteCountry={this.props.deleteCountry} />
             </div>
         )
     }
@@ -35,9 +29,17 @@ class CountryFlagContainer extends Component {
 
 const mapStateToProps = (store) => {
     return {
-        countries: store.countriesReducer.countries,
-        visibleCountries: store.countriesReducer.visibleCountries
+        visibleCountries: store.countriesReducer.searchPhrase === ''
+            ? store.countriesReducer.countries
+            : store.countriesReducer.visibleCountries
     }
 }
 
-export default connect(mapStateToProps)(CountryFlagContainer)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        deleteCountry: (id) => dispatch(deleteCountry(id)),
+        searchCountry: (phrase) => dispatch(searchCountries(phrase))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CountryFlagContainer)
