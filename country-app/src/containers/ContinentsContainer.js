@@ -5,8 +5,9 @@ import Continents from '../presentational/Continents';
 
 const mapStateToProps = (store) => {
     return {
-        visibleCountries: store.countriesReducer.countries.filter(country =>
-                    country.continent === 'Europa')
+        visibleCountries: store.countriesReducer.continentSearch === ''
+            ? store.countriesReducer.countries
+            : store.countriesReducer.visibleCountries
     }
 };
 
@@ -14,7 +15,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         chooseContinent: (name) => dispatch(setContinent(name)),
         deleteCountry: (id) => dispatch(deleteCountry(id)),
-        searchCountry: (name) => dispatch(searchCountries(name))
+        searchCountry: (phrase) => dispatch(searchCountries(phrase))
     }
 }
 

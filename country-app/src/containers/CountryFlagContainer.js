@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import CountryFlagList from '../presentational/CountryFlagList';
-import { searchCountries, deleteCountry } from '../actions/actions-countries';
+import { deleteCountry, searchCountries } from '../actions/actions-countries';
 
 
 const mapStateToProps = (store) => {
@@ -17,5 +17,5 @@ const mapDispatchToProps = (dispatch) => {
         searchCountry: (phrase) => dispatch(searchCountries(phrase))
     }
 }
-
-export default connect(mapStateToProps, mapDispatchToProps)(CountryFlagList)
+ 
+export default connect(mapStateToProps, mapDispatchToProps)(CountryFlagList);

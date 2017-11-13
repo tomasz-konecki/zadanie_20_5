@@ -1,42 +1,40 @@
 import React from 'react';
 
-const CountryDetails = (props) => ({
+class CountryDetails extends React.Component {
 
-componentWillMount() {
-    props.getCountry(props.params.id);
-},
+componentDidMount() {
+    this.props.getCountry(this.props.params.id);
+}
 
 render() {
     return (
-    <div className="country-wrapper">
-        <header>
-            <img className="country-photo" src={props.country.imageUrl} alt="" />
-        </header>
-        <div className="country-info">
-            <h1>{props.country.name}</h1>
-            <h2>Kontynent: {props.country.continent}</h2>
-
-            <div className="info">
-                <div>
-                    <span>{props.country.populace}</span>
-                    <span>Ludność[mln]</span>
+        <div className="country-wrapper">
+            <header>
+                <img className="country-photo" src={this.props.country.imageUrl} alt="" />
+            </header>
+            <div className="country-info">
+                <h1>{this.props.country.name}</h1>
+                <h2>Kontynent: {this.props.country.continent}</h2>
+                <div className="info">
+                    <div>
+                        <span>{this.props.country.populace}</span>
+                        <span>Ludność[mln]</span>
+                    </div>
+                    <div>
+                        <span>{this.props.country.capital}</span>
+                        <span>Stolica</span>
+                    </div>
+                    <div>
+                        <span>{this.props.country.currency}</span>
+                        <span>Waluta</span>
+                    </div>
                 </div>
-
-                <div>
-                    <span>{props.country.capital}</span>
-                    <span>Stolica</span>
-                </div>
-
-                <div>
-                    <span>{props.country.currency}</span>
-                    <span>Waluta</span>
-                </div>
+                
             </div>
-            
         </div>
-    </div>
-)
+    )
 }
-});
+
+};
 
 export default CountryDetails;

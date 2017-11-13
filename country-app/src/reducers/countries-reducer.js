@@ -5,7 +5,8 @@ const initialState = {
     countries: countriesData,
     selectedCountry: {},
     visibleCountries: [],
-    searchPhrase: ''
+    searchPhrase: '',
+    continentSearch: ''
 };
 
 const countriesReducer = (state = initialState, action) => {
@@ -16,7 +17,6 @@ const countriesReducer = (state = initialState, action) => {
             return {...state, selectedCountry}
 
         case SEARCH_COUNTRIES:
-            console.log('action.searchText: ', ...action.searchText);
             const foundCountries = state.countries.filter(country => 
                 country.name.toLowerCase().includes(action.searchText.toLowerCase()));
             return {...state, visibleCountries: foundCountries,
@@ -31,9 +31,11 @@ const countriesReducer = (state = initialState, action) => {
                             visibleCountries: notDeletedVisibleCountries}
 
         case SET_CONTINENT:
+            console.log("Continent: ", action.name);
             const continentCountries = state.countries.filter(country =>
                 country.continent === action.name);
-            return {...state, visibleCountries: continentCountries};
+            return {...state, visibleCountries: continentCountries,
+                            continentSearch: action.name}
 
         default:
             return state;
