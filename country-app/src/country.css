@@ -104,3 +104,14 @@ h2 {
     height: 110px;
 
 }
+
+select, p {
+    margin-left: 45px;
+}
+
+select {
+    width: 80px;
+}
+ p {
+    font-size: 11px;
+ }

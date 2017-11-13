@@ -4,6 +4,7 @@ import CountryFlagList from '../presentational/CountryFlagList';
 const Continents = (props) => (
 
     <div>
+        <p>Select continent</p>
         <select onChange={e => props.chooseContinent(e.target.value)}>
             <option value=""></option>
             <option value="Europa">Europa</option>
@@ -11,7 +12,7 @@ const Continents = (props) => (
         </select>
 
         <CountryFlagList visibleCountries={props.visibleCountries}
-            deleteCountry={props.deleteCountry} searchCountry={props.searchCountry}/>
+            deleteCountry={props.deleteCountry} searchCountry={props.searchCountry} />
             
     </div>
 
